@@ -1,12 +1,24 @@
+import {
+  FORMATION_TIER,
+  IDENTITY_OPTIONS,
+  IDENTITY_PACKAGE,
+} from "./checkout-config";
+
 export type CheckoutState = {
   company: {
     name: string;
     type: string;
     state: string;
     notifyAttorney: string;
+    attorneyEmail: string;
     changingAgent: string;
+    hireChangeAgent: string;
+    yearsOfService: string;
+    formationTier: string;
     filingSpeed: string;
+    agentFilingSpeed: string;
     mailDelivery: string;
+    mailScan: string;
   };
   contact: {
     firstName: string;
@@ -30,25 +42,38 @@ export type CheckoutState = {
     cvv: string;
     expMonth: string;
     expYear: string;
+    useOtherAddress: string;
+    country: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
   };
+  extras: Record<string, string>;
   selected: Record<string, boolean>;
 };
 
 export const initialState: CheckoutState = {
   company: {
     name: "",
-    type: "Limited Liability Company",
+    type: "LLC",
     state: "",
     notifyAttorney: "No",
+    attorneyEmail: "",
     changingAgent: "",
+    hireChangeAgent: "no",
+    yearsOfService: "1",
+    formationTier: FORMATION_TIER,
     filingSpeed: "standard",
-    mailDelivery: "our-office",
+    agentFilingSpeed: "standard",
+    mailDelivery: "",
+    mailScan: "free",
   },
   contact: {
     firstName: "",
     lastName: "",
     phone: "",
-    country: "United States",
+    country: "",
     address: "",
     city: "",
     state: "",
@@ -62,6 +87,16 @@ export const initialState: CheckoutState = {
     cvv: "",
     expMonth: "",
     expYear: "",
+    useOtherAddress: "no",
+    country: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
   },
-  selected: {},
+  extras: {},
+  selected: {
+    [IDENTITY_PACKAGE.id]: true,
+    ...Object.fromEntries(IDENTITY_OPTIONS.map((option) => [option.id, true])),
+  },
 };

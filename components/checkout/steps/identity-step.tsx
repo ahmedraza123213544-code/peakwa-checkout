@@ -1,25 +1,38 @@
 "use client";
 
-import { IDENTITY_OPTIONS } from "@/lib/checkout-config";
-import { OptionRow } from "../option-row";
+import { useId } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { IDENTITY_OPTIONS, IDENTITY_PACKAGE } from "@/lib/checkout-config";
 import type { StepProps } from "../types";
 
 export function IdentityStep({ state, setSelected }: StepProps) {
+  const id = useId();
+  const checked = Boolean(state.selected[IDENTITY_PACKAGE.id]);
+
   return (
     <div className="space-y-5">
-      <p className="max-w-prose text-[15px] text-muted-foreground">
-        Registered agent and business formation are billed as their own lines. Tick
-        the items you want below. Only what you choose appears in your order.
+      <p className="max-w-xl text-[15px] leading-relaxed">
+        {IDENTITY_PACKAGE.intro}
       </p>
-      <div className="space-y-3">
-        {IDENTITY_OPTIONS.map((option) => (
-          <OptionRow
-            key={option.id}
-            option={option}
-            checked={Boolean(state.selected[option.id])}
-            onChange={(checked) => setSelected(option.id, checked)}
-          />
-        ))}
+      <div className="flex items-start gap-3">
+        <Checkbox
+          id={id}
+          checked={checked}
+          onCheckedChange={(value) => {
+            const next = Boolean(value);
+            setSelected(IDENTITY_PACKAGE.id, next);
+            if (next) {
+              IDENTITY_OPTIONS.forEach((option) =>
+                setSelected(option.id, true),
+              );
+            }
+          }}
+          className="mt-0.5"
+        />
+        <Label htmlFor={id} className="font-normal leading-snug">
+          {IDENTITY_PACKAGE.checkboxLabel}
+        </Label>
       </div>
     </div>
   );

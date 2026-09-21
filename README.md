@@ -9,7 +9,8 @@ npm run dev
 
 ## Where to change things
 
-- `lib/checkout-config.ts`: every price, item, tooltip and note. Change the formation tier with `FORMATION_TIER`, the registered agent renewal price in `REGISTERED_AGENT`, and the free-package items in `IDENTITY_OPTIONS`.
+- `lib/checkout-config.ts`: prices, packages, filing speeds, mail scanning, identity package, and recommended extras.
+- `lib/pricing.ts`: how the order summary updates when options change.
 - `lib/pricing.ts`: how the order summary and total are built from the selections.
 - `lib/checkout-state.ts`: the form fields and their defaults.
 - `components/checkout/steps/`: one file per step.

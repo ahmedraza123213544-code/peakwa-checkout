@@ -29,6 +29,13 @@ export const TERMS: LegalSection[] = [
     ],
   },
   {
+    heading: "Website hosting",
+    paragraphs: [
+      "If you choose the Business Identity package, website hosting with SSL is included free for 2 years from the date of your order. After that free period, hosting renews unless you cancel before it ends. We will confirm the renewal rate with you before you are charged for another term.",
+      "You can ask us to cancel hosting before renewal. Domain registration, email and phone services follow the terms shown for those items at checkout.",
+    ],
+  },
+  {
     heading: "Information you provide",
     paragraphs: [
       "You are responsible for giving us accurate and complete information. Mistakes in the information you provide can delay or invalidate a filing, and we are not responsible for problems caused by incorrect information.",

@@ -1,15 +1,50 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+"use client";
 
-export function InfoTip({ text }: { text: string }) {
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+
+export function InfoTip({
+  title,
+  text,
+  className,
+}: {
+  title?: string;
+  text: string;
+  className?: string;
+}) {
   return (
-    <Tooltip>
-      <TooltipTrigger
-        aria-label="More info"
-        className="inline-flex size-[18px] shrink-0 cursor-help items-center justify-center align-middle ml-1 rounded-full bg-muted-foreground/70 text-[11px] font-bold text-background outline-none hover:bg-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+    <Dialog>
+      <DialogTrigger
+        nativeButton
+        type="button"
+        aria-label={title ? `More info about ${title}` : "More info"}
+        className={cn(
+          "inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-600 p-0 !text-[10px] font-bold leading-none text-white outline-none hover:bg-zinc-800 focus-visible:ring-3 focus-visible:ring-ring/50",
+          className,
+        )}
+        onClick={(event) => event.stopPropagation()}
       >
-        !
-      </TooltipTrigger>
-      <TooltipContent>{text}</TooltipContent>
-    </Tooltip>
+        ?
+      </DialogTrigger>
+      <DialogContent className="max-h-[80vh] overflow-y-auto sm:max-w-lg">
+        <DialogHeader>
+          {title ? (
+            <DialogTitle className="pr-8 text-lg font-semibold">
+              {title}
+            </DialogTitle>
+          ) : null}
+          <DialogDescription className="whitespace-pre-line text-[15px] leading-relaxed text-foreground/80">
+            {text}
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }

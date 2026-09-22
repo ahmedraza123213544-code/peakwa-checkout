@@ -5,7 +5,7 @@ export const HERO = {
   subtitle:
     "Tell us about your business, choose what you need, and watch your order total update as you go.",
   highlights: [
-    "Registered agent free the first year",
+    "Registered agent from $49 a year",
     "Pay only for what you select",
   ],
 };
@@ -99,14 +99,14 @@ export type FormationTierId = keyof typeof FORMATION_TIERS;
 export const FORMATION_TIER: FormationTierId = "deluxe";
 
 export const REGISTERED_AGENT = {
-  firstYearPrice: 0,
+  firstYearPrice: 49,
   renewalPrice: 149,
 };
 
 export const SERVICE_YEARS = [
-  { id: "1", years: 1, label: "1 Year — Free" },
-  { id: "2", years: 2, label: "2 Years — $149" },
-  { id: "3", years: 3, label: "3 Years — $298" },
+  { id: "1", years: 1, label: "1 Year - $49" },
+  { id: "2", years: 2, label: "2 Years - $198" },
+  { id: "3", years: 3, label: "3 Years - $347" },
 ] as const;
 
 export const FILING_SPEEDS = [
@@ -161,21 +161,21 @@ export const MAIL_SCAN_TIERS = [
     id: "free",
     price: 0,
     label:
-      "Free Mail Scanning — 3 mail docs per year open and scanned, no unique mailing address — $0/year",
+      "Free Mail Scanning - 3 mail docs per year open and scanned, no unique mailing address - $0/year",
     tip: "We open and scan up to 3 pieces of mail a year. You do not get a unique mailing address with this tier.",
   },
   {
     id: "standard",
     price: 49,
     label:
-      "Includes unique mailing address for your business & 10 more documents opened, scanned, and virtually forwarded — $49/year",
+      "Includes unique mailing address for your business & 10 more documents opened, scanned, and virtually forwarded - $49/year",
     tip: "A unique business mailing address, plus up to 10 extra documents opened, scanned, and forwarded to you each year.",
   },
   {
     id: "plus",
     price: 99,
     label:
-      "Includes unique mailing address for your business & 25 more documents opened, scanned, and virtually forwarded — $99/year",
+      "Includes unique mailing address for your business & 25 more documents opened, scanned, and virtually forwarded - $99/year",
     tip: "A unique business mailing address, plus up to 25 extra documents opened, scanned, and forwarded to you each year.",
   },
 ] as const;
@@ -218,42 +218,46 @@ export const IDENTITY_PACKAGE = {
   label: "Business Identity",
   checkboxLabel: "Sign up for our Business Identity package",
   intro:
-    "Our web package includes everything you need to get your business online. Domain, website + SSL, email and phone number. Website hosting is FREE for 2 years. Google posts and blog posts are free for 3 months.",
-  tip: "A starter kit to get your business online: website with SSL and hosting for 2 years, a business email, a business phone number, a domain, Google Business Profile setup, and content posts. Domain is priced to match GoDaddy and Namecheap. Posts are free for 3 months, then $19.99/mo unless you cancel.",
+    "Our web package includes everything you need to get your business online. Domain, website + SSL, email & phone number! FREE for 90 days. Keep all services and save 20%!",
+  tip: "A starter kit to get your business online: phone, domain, website hosting with SSL, and email. Free for 90 days. Website hosting is then $10/mo unless you cancel.",
   alacarteTitle: "Individual Business Identity Items",
   alacarteIntro:
-    "Website hosting is free for 2 years. Domain is $20. Other items are free to start. Google posts and blog posts are free for 3 months, then $19.99 a month after that.",
+    "Website hosting is free for 3 months, then $10 a month. Other identity items are free to start.",
   bundleNote:
     "Save 20% when you bundle all services in the Business Identity package above!",
 };
 
-export const IDENTITY_OPTIONS: Option[] = [
+/** Items nested under the Business Identity package (matches Delaware). */
+export const IDENTITY_PACKAGE_ITEMS: Option[] = [
   {
     id: "business-phone",
     label: "Phone Service",
     price: 0,
-    tip: "A dedicated business phone number, included with the Business Identity package.",
+    tip: "A dedicated business phone number, included with the Business Identity package. Free for 90 days.",
   },
   {
     id: "domain",
     label: "Domain Name",
-    price: 20,
-    note: "Priced to match GoDaddy and Namecheap.",
-    tip: "Your business domain name, priced to match GoDaddy and Namecheap. This is the one part of the package that is not free.",
-  },
-  {
-    id: "business-email",
-    label: "Email Service",
     price: 0,
-    tip: "A business email address on your own domain, included with the Business Identity package.",
+    tip: "Your business domain name, included with the Business Identity package. Free for 90 days.",
   },
   {
     id: "website-hosting",
     label: "Website Hosting",
     price: 0,
-    note: "Free for 2 years.",
-    tip: "A full business website with SSL and hosting, included free for 2 years from the date you order. After those 2 years, hosting renews unless you cancel before the free period ends. We will confirm the renewal rate with you before you are charged. Cancel anytime before renewal and you will not be billed for another term.",
+    note: "Free for 3 months, then $10/mo.",
+    tip: "A full business website with SSL and hosting. Free for 3 months, then $10/mo unless you cancel before the free period ends.",
   },
+  {
+    id: "business-email",
+    label: "Email Service",
+    price: 0,
+    tip: "A business email address on your own domain, included with the Business Identity package. Free for 90 days.",
+  },
+];
+
+/** Extra Peakwa identity add-ons shown a la carte on Recommended Items. */
+export const IDENTITY_EXTRA_OPTIONS: Option[] = [
   {
     id: "gmb-setup",
     label: "Google My Business set up",
@@ -276,11 +280,16 @@ export const IDENTITY_OPTIONS: Option[] = [
   },
 ];
 
+export const IDENTITY_OPTIONS: Option[] = [
+  ...IDENTITY_PACKAGE_ITEMS,
+  ...IDENTITY_EXTRA_OPTIONS,
+];
+
 export const CARD_MACHINE_OPTION: Option = {
   id: "card-machine",
   label: "Free Credit Card Machine",
   price: 0,
-  note: "This is credit card processing — sign up and we ship a free machine to you.",
+  note: "This is credit card processing - sign up and we ship a free machine to you.",
   tip: "This is our credit card processing service. We set you up with a payment processor and gateway so you can accept cards from day one. There is no cost to apply, and a physical credit card machine is shipped to you free of charge when you sign up.",
 };
 
@@ -295,7 +304,7 @@ export const DBA_OPTION: Option = {
   id: "dba-trade-name",
   label: "DBA Trade Name Filing",
   price: 150,
-  tip: "This is an alternative name your business can use to operate in a jurisdiction instead of your legal name. A Trade Name — also called a DBA name or assumed name — is like a pseudonym for your business, allowing you to do business under a different name without forming a brand new business entity. Trade Names require an additional filing. We can file this for you for $125 plus state fees.",
+  tip: "This is an alternative name your business can use to operate in a jurisdiction instead of your legal name. A Trade Name - also called a DBA name or assumed name - is like a pseudonym for your business, allowing you to do business under a different name without forming a brand new business entity. Trade Names require an additional filing. We can file this for you for $125 plus state fees.",
   extraField: {
     key: "dba-name",
     label: "Trade Name (DBA)",
@@ -313,6 +322,12 @@ export const DBA_OPTION: Option = {
         price: 25,
       },
     ],
+  },
+  related: {
+    id: "foreign-status-report",
+    label: "Foreign Registration - Company Status Report",
+    price: 50,
+    tip: "A company status report often needed when filing a DBA or foreign registration. Shows current filing status with the state.",
   },
 };
 
@@ -369,10 +384,10 @@ export const COMPANY_NAME_TIP =
   "The exact legal name you want on the formation documents. If the name is taken in your state, we will contact you with options.";
 
 export const MAIL_DELIVERY_TIP =
-  "Legal and tax mail still goes to your registered agent. This is for everything else — bank mail, vendor mail, and similar.";
+  "Legal and tax mail still goes to your registered agent. This is for everything else - bank mail, vendor mail, and similar.";
 
 export const REGISTERED_AGENT_TIP =
-  "A person or company designated to receive legal and state documents on your behalf, required in every state. Free the first year, then renews at $149/yr.";
+  "A person or company designated to receive legal and state documents on your behalf, required in every state. $49 the first year, then renews at $149/yr.";
 
 export const FORMATION_TIP =
   "Our fee for preparing and filing your formation documents with the state. Choose Basic, Deluxe, or Complete depending on whether you also need an EIN, operating agreement, and formation kit.";

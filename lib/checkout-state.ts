@@ -1,7 +1,7 @@
 import {
   FORMATION_TIER,
-  IDENTITY_OPTIONS,
   IDENTITY_PACKAGE,
+  IDENTITY_PACKAGE_ITEMS,
 } from "./checkout-config";
 
 export type CheckoutState = {
@@ -97,6 +97,8 @@ export const initialState: CheckoutState = {
   extras: {},
   selected: {
     [IDENTITY_PACKAGE.id]: true,
-    ...Object.fromEntries(IDENTITY_OPTIONS.map((option) => [option.id, true])),
+    ...Object.fromEntries(
+      IDENTITY_PACKAGE_ITEMS.map((option) => [option.id, true]),
+    ),
   },
 };

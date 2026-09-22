@@ -7,6 +7,7 @@ import {
   FORMATION_TIERS,
   IDENTITY_OPTIONS,
   IDENTITY_PACKAGE,
+  IDENTITY_PACKAGE_ITEMS,
   MAIL_SCAN_TIERS,
   MAIL_SCAN_TIP,
   REGISTERED_AGENT,
@@ -124,7 +125,7 @@ export function buildSummary(state: CheckoutState) {
       label: IDENTITY_PACKAGE.label,
       amount: 0,
       tip: IDENTITY_PACKAGE.tip,
-      children: IDENTITY_OPTIONS.map((option) => ({
+      children: IDENTITY_PACKAGE_ITEMS.map((option) => ({
         id: option.id,
         label: option.label,
         amount: option.price,
@@ -132,6 +133,17 @@ export function buildSummary(state: CheckoutState) {
         tip: option.tip,
       })),
     });
+    for (const option of IDENTITY_OPTIONS) {
+      if (IDENTITY_PACKAGE_ITEMS.some((item) => item.id === option.id)) continue;
+      if (!state.selected[option.id]) continue;
+      lines.push({
+        id: option.id,
+        label: option.label,
+        amount: option.price,
+        note: option.note,
+        tip: option.tip,
+      });
+    }
   } else {
     for (const option of IDENTITY_OPTIONS) {
       if (!state.selected[option.id]) continue;
@@ -160,7 +172,7 @@ export function buildSummary(state: CheckoutState) {
       id: "mail-scanning",
       label: "Mail Scanning Service",
       amount: scan.price,
-      note: scan.price ? `${money(scan.price)}/year` : "Free tier — 3 documents/year",
+      note: scan.price ? `${money(scan.price)}/year` : "Free tier - 3 documents/year",
       tip: MAIL_SCAN_TIP,
     });
   }

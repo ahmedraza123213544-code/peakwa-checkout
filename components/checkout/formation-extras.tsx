@@ -54,7 +54,7 @@ export function FormationExtras({ state, setField }: Pick<StepProps, "state" | "
                 className="flex flex-1 flex-col items-start gap-1 font-normal"
               >
                 <span className="font-medium">
-                  {money(tier.price)} — {tier.label}
+                  {money(tier.price)} - {tier.label}
                 </span>
                 <span className="text-[13px] leading-relaxed text-muted-foreground">
                   {tier.summary}
@@ -103,7 +103,7 @@ export function FormationExtras({ state, setField }: Pick<StepProps, "state" | "
                 className="flex flex-1 flex-col items-start gap-0.5 font-normal"
               >
                 <span className="font-medium">
-                  {speed.price === 0 ? "Included" : money(speed.price)} —{" "}
+                  {speed.price === 0 ? "Included" : money(speed.price)} -{" "}
                   {speed.label}
                 </span>
                 <span className="text-[13px] text-muted-foreground">

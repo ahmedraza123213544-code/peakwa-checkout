@@ -21,7 +21,7 @@ export function FilingStep({ state, setField }: StepProps) {
   return (
     <ExtraBox
       title="Change Registered Agent Filing Options"
-      description={`${money(agentWaived ? 0 : CHANGE_AGENT_FILING.ourFee)} — Our fee${agentWaived ? " (waived when you order more than one year)" : ""}`}
+      description={`${money(agentWaived ? 0 : CHANGE_AGENT_FILING.ourFee)} - Our fee${agentWaived ? " (waived when you order more than one year)" : ""}`}
       footer={
         <p className="border-t pt-3 text-sm font-medium">
           Total cost for this filing product: {money(agent.total)}
@@ -56,7 +56,7 @@ export function FilingStep({ state, setField }: StepProps) {
               className="flex flex-1 flex-col items-start gap-0.5 font-normal"
             >
               <span className="font-medium">
-                {money(speed.stateFee)} — {speed.label}
+                {money(speed.stateFee)} - {speed.label}
               </span>
               <span className="text-[13px] text-muted-foreground">
                 {speed.days}

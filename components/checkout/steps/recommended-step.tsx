@@ -118,7 +118,7 @@ function AdditionalItemRow({
             {option.extraFiling && selectedSpeed ? (
               <ExtraBox
                 title={option.extraFiling.title}
-                description={`${money(ourFee)} — Our fee`}
+                description={`${money(ourFee)} - Our fee`}
                 footer={
                   <p className="border-t pt-3 text-sm font-medium">
                     Total cost for this filing product:{" "}
@@ -143,7 +143,7 @@ function AdditionalItemRow({
                         className="flex flex-col items-start gap-0.5 font-normal"
                       >
                         <span className="font-medium">
-                          {money(speed.price)} — {speed.label}
+                          {money(speed.price)} - {speed.label}
                         </span>
                         <span className="text-[13px] text-muted-foreground">
                           {speed.days}

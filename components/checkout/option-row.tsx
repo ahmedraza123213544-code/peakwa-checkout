@@ -36,7 +36,7 @@ export function OptionRow({
         <div className="flex-1">
           <div className="flex items-start gap-1.5">
             <Label htmlFor={id} className="min-w-0 font-normal leading-snug">
-              {showPrice ? `${option.label} — ${price}` : option.label}
+              {showPrice ? `${option.label} - ${price}` : option.label}
             </Label>
             <InfoTip title={option.label} text={option.tip} className="mt-0.5" />
           </div>

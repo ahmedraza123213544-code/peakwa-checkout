@@ -3,7 +3,7 @@
 import { useId } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { IDENTITY_OPTIONS, IDENTITY_PACKAGE } from "@/lib/checkout-config";
+import { IDENTITY_PACKAGE, IDENTITY_PACKAGE_ITEMS } from "@/lib/checkout-config";
 import type { StepProps } from "../types";
 
 export function IdentityStep({ state, setSelected }: StepProps) {
@@ -23,7 +23,7 @@ export function IdentityStep({ state, setSelected }: StepProps) {
             const next = Boolean(value);
             setSelected(IDENTITY_PACKAGE.id, next);
             if (next) {
-              IDENTITY_OPTIONS.forEach((option) =>
+              IDENTITY_PACKAGE_ITEMS.forEach((option) =>
                 setSelected(option.id, true),
               );
             }

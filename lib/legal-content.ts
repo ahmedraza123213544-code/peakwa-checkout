@@ -1,6 +1,6 @@
 export type LegalSection = { heading: string; paragraphs: string[] };
 
-export const LEGAL_LAST_UPDATED = "September 19, 2026";
+export const LEGAL_LAST_UPDATED = "September 21, 2026";
 
 export const TERMS: LegalSection[] = [
   {
@@ -31,7 +31,7 @@ export const TERMS: LegalSection[] = [
   {
     heading: "Website hosting",
     paragraphs: [
-      "If you choose the Business Identity package, website hosting with SSL is included free for 2 years from the date of your order. After that free period, hosting renews unless you cancel before it ends. We will confirm the renewal rate with you before you are charged for another term.",
+      "If you choose the Business Identity package, website hosting with SSL is included free for 3 months from the date of your order. After that free period, hosting is $10 per month unless you cancel before it ends.",
       "You can ask us to cancel hosting before renewal. Domain registration, email and phone services follow the terms shown for those items at checkout.",
     ],
   },

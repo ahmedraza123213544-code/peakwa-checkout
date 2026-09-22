@@ -105,7 +105,7 @@ export function SelectField({
       <FieldLabel htmlFor={id} label={label} tip={tip} />
       <Select
         value={value || null}
-        onValueChange={(v) => onChange(v ?? "")}
+        onValueChange={(v: string | null) => onChange(v ?? "")}
         items={items}
       >
         <SelectTrigger
